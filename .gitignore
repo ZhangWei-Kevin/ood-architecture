@@ -25,6 +25,12 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
+
+#eclipse
+.metadata
+bin
+*.class
+
 # Icon must end with two \r
 Icon
 

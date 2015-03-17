@@ -1,0 +1,23 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="oracle_1_unit" transaction-type="JTA">
+		<description>
+	            TODO add something here
+	        </description>
+		<jta-data-source>java:/oracle_1</jta-data-source>
+		 <class>asia.wavelet.parkson.data.entity.account.local.UserEntity</class> 
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.current_session_context_class"
+				value="jta" />
+			<property name="hibernate.connection.release_mode" value="auto" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

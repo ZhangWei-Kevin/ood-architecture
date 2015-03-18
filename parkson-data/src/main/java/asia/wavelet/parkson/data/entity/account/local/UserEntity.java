@@ -4,11 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import asia.wavelet.parkson.data.entity.common.CommonEntity;
+import asia.wavelet.parkson.data.entity.common.BaseEntity;
 
 @Entity
 @Table(name = "userss")
-public class UserEntity extends CommonEntity{
+public class UserEntity extends BaseEntity{
 
 	private String username;
 

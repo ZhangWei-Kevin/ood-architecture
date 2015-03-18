@@ -34,13 +34,13 @@ public class LoginService implements ILoginService {
 		Iterable<UserEntity> userEntities = userEntityDao.findAll();
 		Iterator<UserEntity> iterator = userEntities.iterator();
 		while(iterator.hasNext()){
-			System.out.println("LoginService.login()==" + iterator.next().getUsername());
+			System.out.println("LoginService.login()=====1========" + iterator.next().getUsername());
 		}
 		
 		Iterable<TestJtaEntity> jtaEntities = testJtaEntityDao.findAll();
 		Iterator<TestJtaEntity> jtaEntitiesIterator = jtaEntities.iterator();
 		while(jtaEntitiesIterator.hasNext()){
-			System.out.println("LoginService.login()==" + jtaEntitiesIterator.next().getName());
+			System.out.println("LoginService.login()======2========" + jtaEntitiesIterator.next().getName());
 		}
 		
 		//oracle1
@@ -54,6 +54,10 @@ public class LoginService implements ILoginService {
 		 testJtaEntity.setGuid(Calendar.getInstance().getTimeInMillis() * 8 + "");
 		 testJtaEntity.setName("xyz");
 		 testJtaEntityDao.save(testJtaEntity);
+		 
+		 
+		 //delete 
+//		 userEntityDao.delete("1426653962171");
 		 
 //		 int i = 8 /0;
 		 

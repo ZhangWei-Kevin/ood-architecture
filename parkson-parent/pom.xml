@@ -171,8 +171,11 @@
 				<!-- <exclusions> <exclusion> <groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> 
 					</exclusion> </exclusions> -->
 			</dependency>
-
-			<!-- JSON begin -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
 			<!-- JSON begin -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -305,6 +308,12 @@
 				<version>12.1.0</version>
 			</dependency>
 			<!-- PERSISTENCE end -->
+
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>2.2.1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

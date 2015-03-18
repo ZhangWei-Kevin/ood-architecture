@@ -15,7 +15,7 @@
 
 
 	<description>for jobss JTA</description>
-
+	<import resource="applicationContext-scheduler.xml"/>
 	<context:property-placeholder
 		ignore-resource-not-found="true" location="classpath*:/application-jboss.properties" />
 
@@ -50,11 +50,9 @@
 	</bean>
 
 	<!-- 使用annotation定义事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-	<!-- 定义aspectj -->
-	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- <aop:aspectj-autoproxy proxy-target-class="true" /> -->
 	
 	<context:annotation-config></context:annotation-config>
 	<tx:jta-transaction-manager></tx:jta-transaction-manager>
@@ -123,8 +121,7 @@
 		</property>
 	</bean>
 
-	<bean id="oracle2_HibernateJpaVendorAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+	<bean id="oracle2_HibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform">
 			<value>${databasePlatform_2}</value>
 		</property>

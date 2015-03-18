@@ -23,8 +23,6 @@ public class LoginService implements ILoginService {
 	@Autowired
 	private TestJtaEntityDao testJtaEntityDao;
 	
-	
-	
 	public LoginService() {
 		super();
 	}

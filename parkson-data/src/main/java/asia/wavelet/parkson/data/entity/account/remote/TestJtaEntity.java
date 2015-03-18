@@ -11,12 +11,6 @@ public class TestJtaEntity extends CommonEntity{
 
 	private String name;
 
-	
-	public TestJtaEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -24,5 +18,7 @@ public class TestJtaEntity extends CommonEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 
 }

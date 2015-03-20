@@ -1,4 +1,4 @@
-package asia.wavelet.parkson.data.entity.account.local;
+/*package asia.wavelet.parkson.data.entity.account.local;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -63,3 +63,4 @@ public class UserEntity extends BaseEntity{
 	
 	
 }
+*/

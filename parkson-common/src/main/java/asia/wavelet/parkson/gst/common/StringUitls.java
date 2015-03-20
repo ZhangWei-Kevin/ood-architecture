@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class StringUitls {
 
 	public static String getHello(){
-		return "hello_:" + Calendar.getInstance().getTimeInMillis();
+		return "hello_123:" + Calendar.getInstance().getTimeInMillis();
 	}
 
 }

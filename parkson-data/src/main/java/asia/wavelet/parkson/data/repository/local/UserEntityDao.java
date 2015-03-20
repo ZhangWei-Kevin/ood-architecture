@@ -1,4 +1,4 @@
-package asia.wavelet.parkson.data.repository.local;
+/*package asia.wavelet.parkson.data.repository.local;
 
 import java.util.List;
 
@@ -10,3 +10,4 @@ public interface UserEntityDao extends CrudRepository<UserEntity, String> {
 
 	List<UserEntity> findByGuid(String guid);
 }
+*/

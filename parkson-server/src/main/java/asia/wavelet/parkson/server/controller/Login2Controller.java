@@ -60,7 +60,7 @@ public class Login2Controller {
 	}
 	@RequestMapping(value = "/test2", method = RequestMethod.GET)
 	public String test2() {
-		List<AppConfigCustomFieldEntity> entities = appConfigCustomFieldEntityDao2.findByName("abc", new   PageRequest(0, 2, Direction.ASC, "guid"));
+		List<AppConfigCustomFieldEntity> entities = appConfigCustomFieldEntityDao2.findByName("abc", new   PageRequest(2, 2, Direction.ASC, "guid"));
 		for (AppConfigCustomFieldEntity entity : entities) {
 			logger.info("guid = [{}], name = [{}]", entity.getGuid(), entity.getName());
 		}

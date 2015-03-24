@@ -6,12 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @MappedSuperclass
 public abstract class BaseEntity {
+	private static Logger logger = LoggerFactory.getLogger(BaseEntity.class);
 	
 	@Id
 	private String guid;
 
+	@Version
 	private Integer version;
 
 	private String code;
@@ -26,9 +31,6 @@ public abstract class BaseEntity {
 
 	private String description;
 	
-	
-	
-	
 	public String getGuid() {
 		return guid;
 	}
@@ -37,7 +39,6 @@ public abstract class BaseEntity {
 		this.guid = guid;
 	}
 
-	@Version
 	public Integer getVersion() {
 		return version;
 	}
@@ -85,7 +86,5 @@ public abstract class BaseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 
 }

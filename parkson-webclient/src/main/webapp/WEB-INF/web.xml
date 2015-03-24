@@ -56,4 +56,5 @@
 		<session-timeout>20</session-timeout>
 	</session-config>
 
+	<welcome-file-list>/index.jsp</welcome-file-list>
 </web-app>

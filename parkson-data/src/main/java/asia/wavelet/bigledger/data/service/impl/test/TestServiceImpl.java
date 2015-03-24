@@ -1,10 +1,8 @@
 package asia.wavelet.bigledger.data.service.impl.test;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,13 +32,7 @@ public class TestServiceImpl extends BaseService implements ITestService {
 
 	@Override
     public void add() {
-		Person person = new Person();
-		person.setGuid(UUID.randomUUID().toString());
-		person.setVersion(0);
-		person.setCode(new Random().nextLong() + "");
-		person.setStartLifecycle(Calendar.getInstance());
-		person.setEndLifecycle(Calendar.getInstance());
-		
+		Person person = new Person(new Random().nextInt() + "", "", new Random().nextInt(1000) + "");
 		personDao.save(person);
     }
 
@@ -60,6 +52,22 @@ public class TestServiceImpl extends BaseService implements ITestService {
 	@Override
     public void remove() {
 		personDao.deleteAll();
+    }
+
+	@Override
+    public void findByUserDefine() {
+		Person p = personDao.findByXXId("fe2afc13-65d4-4a86-bd1a-2b431803cad4");
+		System.out.println("TestServiceImpl.findByUserDefine()  = " + p);
+		Person p2 = personDao.findByXXId("xx");
+		System.out.println("TestServiceImpl.findByUserDefine() p2 = " + p2);
+		
+		
+		List<Person> p3s = personDao.findByYY("1");
+		System.out.println("TestServiceImpl.findByUserDefine() p3s = " + p3s);
+		
+		
+		List<Person> p4s = personDao.findByYY("2");
+		System.out.println("TestServiceImpl.findByUserDefine() p4s = " + p4s);
     }
 
 }

@@ -19,6 +19,12 @@ public class PersonController extends BaseController{
 		testService.findBy();
 		return "login";
 	}
+	
+	@RequestMapping("/find2")
+	public String find2(){
+		testService.findByUserDefine();
+		return "login";
+	}
 	@RequestMapping("/testAdd")
 	public String testAdd(){
 		testService.add();

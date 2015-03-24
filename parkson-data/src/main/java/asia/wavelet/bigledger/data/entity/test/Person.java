@@ -9,4 +9,12 @@ import asia.wavelet.bigledger.data.entity.common.BaseEntity;
 @Table(name = "persons")
 public class Person extends BaseEntity {
 
+	protected Person() {
+	    super();
+    }
+
+	public Person(String code, String name, String description) {
+	    super(code, name, description);
+    }
+
 }

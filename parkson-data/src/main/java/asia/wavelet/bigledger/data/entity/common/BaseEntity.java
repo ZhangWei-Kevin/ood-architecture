@@ -1,6 +1,7 @@
 package asia.wavelet.bigledger.data.entity.common;
 
 import java.util.Calendar;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -9,6 +10,8 @@ import javax.persistence.Version;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import asia.wavelet.bigledger.system.common.DateHelper;
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -34,6 +37,24 @@ public abstract class BaseEntity {
 
 	@Column(name = "description")
 	private String description;
+	
+	/**
+	 * fetch from database
+	 */
+	protected BaseEntity() {
+		super();
+	}
+	
+	public BaseEntity(String code, String name, String description) {
+		super();
+		this.guid = UUID.randomUUID().toString();
+		this.version = 0;
+		this.code = code;
+		this.name = name;
+		this.startLifecycle = DateHelper.getCurrentDateTime();
+		this.endLifecycle = DateHelper.getMax();
+		this.description = description;
+	}
 	
 	public String getGuid() {
 		return guid;

@@ -1,9 +1,11 @@
 package asia.wavelet.bigledger.data.entity.common;
 
-import java.util.Calendar;
 import java.util.UUID;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
@@ -11,12 +13,12 @@ import javax.persistence.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import asia.wavelet.bigledger.system.common.DateHelper;
+import asia.wavelet.bigledger.system.common.TimePeriod;
 
 @MappedSuperclass
 public abstract class BaseEntity {
 	private static Logger logger = LoggerFactory.getLogger(BaseEntity.class);
-	
+
 	@Id
 	private String guid;
 
@@ -29,33 +31,31 @@ public abstract class BaseEntity {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "start_lifecycle")
-	private Calendar startLifecycle;
-	
-	@Column(name = "end_lifecycle")
-	private Calendar endLifecycle;
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "startTime", column = @Column(name = "start_lifecycle")),
+	        @AttributeOverride(name = "endTime", column = @Column(name = "end_lifecycle")) })
+	private TimePeriod lifecycle;
 
 	@Column(name = "description")
 	private String description;
-	
+
 	/**
 	 * fetch from database
 	 */
 	protected BaseEntity() {
 		super();
 	}
-	
+
 	public BaseEntity(String code, String name, String description) {
 		super();
-		this.guid = UUID.randomUUID().toString();
+		this.guid = UUID.randomUUID().toString().toUpperCase();
 		this.version = 0;
 		this.code = code;
 		this.name = name;
-		this.startLifecycle = DateHelper.getCurrentDateTime();
-		this.endLifecycle = DateHelper.getMax();
+		this.lifecycle = TimePeriod.createDefault();
 		this.description = description;
 	}
-	
+
 	public String getGuid() {
 		return guid;
 	}
@@ -86,22 +86,6 @@ public abstract class BaseEntity {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Calendar getStartLifecycle() {
-		return startLifecycle;
-	}
-
-	public void setStartLifecycle(Calendar startLifecycle) {
-		this.startLifecycle = startLifecycle;
-	}
-
-	public Calendar getEndLifecycle() {
-		return endLifecycle;
-	}
-
-	public void setEndLifecycle(Calendar endLifecycle) {
-		this.endLifecycle = endLifecycle;
 	}
 
 	public String getDescription() {

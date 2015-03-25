@@ -7,8 +7,8 @@ public class Profiles {
 
 	public static final String PRODUCTION = "production";
 	public static final String DEVELOPMENT = "development";
-	public static final String UNIT_TEST = "test";
-	public static final String FUNCTIONAL_TEST = "functional";
+	public static final String UNIT_TEST= "test";
+	public static final String UNIT_TEST_LOG4JDBC = "test_log4jdbc";
 
 	public static void setProfileAsSystemProperty(String profile) {
 		System.setProperty(ACTIVE_PROFILE, profile);

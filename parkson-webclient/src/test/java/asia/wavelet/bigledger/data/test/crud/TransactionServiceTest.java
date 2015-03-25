@@ -14,11 +14,13 @@ import asia.wavelet.bigledger.data.test.common.SpringTransactionalTestCase;
 public class TransactionServiceTest extends SpringTransactionalTestCase {
 	private static final Logger logger = LoggerFactory.getLogger(TransactionServiceTest.class);
 
+	
+	
 	@Autowired
 	private ITestService testService;
 
 	@Test
-	@Rollback(true)
+	@Rollback(false)
 	public void add() throws Exception {
 		testService.add();
 	}

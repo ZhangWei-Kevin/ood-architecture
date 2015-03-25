@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
 		<groupId>asia.wavelet</groupId>
 		<artifactId>parkson-parent</artifactId>
 		<version>2.0.0</version>
@@ -15,13 +15,13 @@
 
 	<url>http://www.wavelet.asia</url>
 
-  <dependencies>
-		<!-- inner dependency start-->
+	<dependencies>
+		<!-- inner dependency start -->
 		<dependency>
 			<groupId>asia.wavelet</groupId>
 			<artifactId>parkson-data</artifactId>
 		</dependency>
-		<!-- inner dependency end-->
+		<!-- inner dependency end -->
 
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
@@ -68,6 +68,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.googlecode.log4jdbc</groupId>
+			<artifactId>log4jdbc</artifactId>
+			<version>1.2</version>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- PERSISTENCE begin -->
 		<dependency>
@@ -179,7 +185,7 @@
 			<artifactId>quartz</artifactId>
 		</dependency>
 	</dependencies>
-  <build>
-    <finalName>parkson-webclient</finalName>
-  </build>
+	<build>
+		<finalName>parkson-webclient</finalName>
+	</build>
 </project>

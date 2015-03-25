@@ -24,4 +24,9 @@ public class TransactionServiceTest extends SpringTransactionalTestCase {
 	public void add() throws Exception {
 		testService.add();
 	}
+	@Test
+	@Rollback(false)
+	public void addManyObject() throws Exception {
+		testService.addMany();
+	}
 }

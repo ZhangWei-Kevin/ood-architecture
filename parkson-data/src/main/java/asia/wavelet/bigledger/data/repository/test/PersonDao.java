@@ -14,4 +14,5 @@ public interface PersonDao extends CrudRepository<Person, String> {
 	
 	@Query("select p from Person p where p.name like %:name%")
 	public List<Person> findByYY(@Param("name")String name);
+	
 }

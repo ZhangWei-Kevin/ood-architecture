@@ -8,4 +8,6 @@ public interface ITestService {
 	public void add();
 	public void modify();
 	public void remove();
+	
+	public void addMany();
 }

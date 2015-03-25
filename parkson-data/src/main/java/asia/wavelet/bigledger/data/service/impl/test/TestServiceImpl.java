@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import asia.wavelet.bigledger.data.entity.test.Country;
 import asia.wavelet.bigledger.data.entity.test.Person;
+import asia.wavelet.bigledger.data.repository.test.CountryDao;
 import asia.wavelet.bigledger.data.repository.test.PersonDao;
 import asia.wavelet.bigledger.data.service.common.BaseService;
 import asia.wavelet.bigledger.data.service.test.ITestService;
@@ -19,6 +21,9 @@ public class TestServiceImpl extends BaseService implements ITestService {
 
 	@Autowired
 	private PersonDao personDao;
+	
+	@Autowired
+	private CountryDao countryDao;
 
 	@Override
 	public void justTest() {
@@ -68,6 +73,21 @@ public class TestServiceImpl extends BaseService implements ITestService {
 		
 		List<Person> p4s = personDao.findByYY("2");
 		System.out.println("TestServiceImpl.findByUserDefine() p4s = " + p4s);
+    }
+
+	@Override
+    public void addMany() {
+		
+		for(int i = 0 ; i < 10 ; i ++){
+			Country country = new Country(new Random().nextInt() + "",  i +"", new Random().nextInt(1000) + "", "asia");
+			
+			Person person = new Person(new Random().nextInt() + "",  i * 111 + "", new Random().nextInt(10) * 100 + "");
+			person.setCountry(country);
+			
+			countryDao.save(country);
+			personDao.save(person);
+		}
+		
     }
 
 }

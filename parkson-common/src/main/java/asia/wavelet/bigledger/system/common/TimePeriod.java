@@ -3,6 +3,7 @@ package asia.wavelet.bigledger.system.common;
 import java.text.MessageFormat;
 import java.util.Calendar;
 
+
 public class TimePeriod {
 
 	private Calendar startTime;

@@ -33,7 +33,7 @@ public abstract class BaseEntity {
 
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "startTime", column = @Column(name = "start_lifecycle")),
-	        @AttributeOverride(name = "endTime", column = @Column(name = "end_lifecycle")) })
+	        @AttributeOverride (name = "endTime", column = @Column(name = "end_lifecycle")) })
 	private TimePeriod lifecycle;
 
 	@Column(name = "description")

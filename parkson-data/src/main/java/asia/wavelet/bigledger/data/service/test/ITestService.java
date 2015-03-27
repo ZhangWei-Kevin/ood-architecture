@@ -4,6 +4,7 @@ public interface ITestService {
 	public void justTest();
 	
 	public void findBy();
+	public void findByPagable();
 	public void findByUserDefine();
 	public void add();
 	public void modify();

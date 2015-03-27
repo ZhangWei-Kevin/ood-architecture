@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.javasimon.aop.Monitored;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,15 +14,20 @@ import asia.wavelet.bigledger.data.entity.test.Country;
 import asia.wavelet.bigledger.data.entity.test.Person;
 import asia.wavelet.bigledger.data.repository.test.CountryDao;
 import asia.wavelet.bigledger.data.repository.test.PersonDao;
+import asia.wavelet.bigledger.data.repository.test.PersonPageDao;
 import asia.wavelet.bigledger.data.service.common.BaseService;
 import asia.wavelet.bigledger.data.service.test.ITestService;
 
 @Service
 @Transactional
+@Monitored
 public class TestServiceImpl extends BaseService implements ITestService {
 
 	@Autowired
 	private PersonDao personDao;
+	
+	@Autowired
+	private PersonPageDao personPageDao;
 	
 	@Autowired
 	private CountryDao countryDao;
@@ -88,6 +95,11 @@ public class TestServiceImpl extends BaseService implements ITestService {
 			personDao.save(person);
 		}
 		
+    }
+
+	@Override
+    public void findByPagable() {
+		personPageDao.findByDescriptionLike("00", new PageRequest(2, 3));
     }
 
 }

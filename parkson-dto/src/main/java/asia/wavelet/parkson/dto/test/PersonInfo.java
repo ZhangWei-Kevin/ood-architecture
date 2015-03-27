@@ -2,6 +2,7 @@ package asia.wavelet.parkson.dto.test;
 
 import java.util.Calendar;
 
+import asia.wavelet.bigledger.system.common.DateHelper;
 import asia.wavelet.parkson.dto.common.Dto;
 
 public class PersonInfo extends Dto {
@@ -13,6 +14,18 @@ public class PersonInfo extends Dto {
     private String countryArea;
     private Calendar startLifecycle;
     
+    
+    
+	public PersonInfo() {
+	    super();
+    }
+	public PersonInfo(String code, String name, Calendar startLifecycle, String countryArea) {
+	    super();
+	    this.code = code;
+	    this.name = name;
+	    this.startLifecycle = startLifecycle;
+	    this.countryArea = countryArea;
+    }
 	public String getCode() {
 		return code;
 	}
@@ -37,4 +50,11 @@ public class PersonInfo extends Dto {
 	public void setStartLifecycle(Calendar startLifecycle) {
 		this.startLifecycle = startLifecycle;
 	}
+	@Override
+    public String toString() {
+	    return "PersonInfo [code=" + code + ", name=" + name + ", countryArea=" + countryArea + ", startLifecycle="
+	            + DateHelper.toDateTimeString(startLifecycle) + "]";
+    }
+	
+	
 }

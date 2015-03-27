@@ -20,6 +20,6 @@
 		<module>../parkson-common</module>
 		<module>../parkson-dto</module>
 		<module>../parkson-data</module>
-		<module>../parkson-webclient</module>
+		<module>../parkson-server</module>
 	</modules>
 </project>

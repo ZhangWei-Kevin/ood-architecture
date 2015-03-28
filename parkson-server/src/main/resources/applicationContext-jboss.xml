@@ -27,8 +27,7 @@
 	<jee:jndi-lookup id="ds_server" jndi-name="java:/oracle_1" />
 	
 
-	<bean id="transactionManager"
-		class="org.springframework.transaction.jta.JtaTransactionManager">
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" >
 		<property name="userTransaction">
 			<null />
 		</property>
@@ -52,7 +51,8 @@
 	<bean id="serverEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="jtaDataSource" ref="ds_server" />
-		<property name="packagesToScan" value="asia.wavelet.bigledger.data.entity.test.jtaA"></property>
+		<property name="packagesToScan" value="asia.wavelet.bigledger.data.entity.test.jtaA" />
+		<property name="persistenceUnitName" value="entity_unit_server"></property>
 		<property name="jpaVendorAdapter" ref="oralce1_HibernateJpaVendorAdapter" />
 		<property name="loadTimeWeaver">
 				<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
@@ -87,7 +87,8 @@
 
 	<bean id="queueEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="jtaDataSource" ref="ds_queue" />
-		<property name="packagesToScan" value="asia.wavelet.bigledger.data.entity.test.jtaB"></property>
+		<property name="packagesToScan" value="asia.wavelet.bigledger.data.entity.test.jtaB"/>
+		<property name="persistenceUnitName" value="entity_unit_queue"></property>
 		<property name="jpaVendorAdapter" ref="oracle2_HibernateJpaVendorAdapter" />
 		<property name="jpaProperties">
 			<props>

@@ -84,6 +84,16 @@
 				<artifactId>bigledger-data</artifactId>
 				<version>${asia-wavelet.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>asia.wavelet</groupId>
+				<artifactId>bigledger-service</artifactId>
+				<version>${asia-wavelet.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>asia.wavelet</groupId>
+				<artifactId>bigledger-service.impl</artifactId>
+				<version>${asia-wavelet.version}</version>
+			</dependency>
 
 			<!-- utils -->
 			<dependency>

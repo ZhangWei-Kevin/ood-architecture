@@ -1,4 +1,4 @@
-package asia.wavelet.bigledger.data.service.test;
+package asia.wavelet.bigledger.service.test;
 
 public interface ITestService {
 	public void justTest();

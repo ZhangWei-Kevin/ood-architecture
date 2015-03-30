@@ -19,6 +19,18 @@
 		<!-- inner dependency -->
 		<dependency>
 			<groupId>asia.wavelet</groupId>
+			<artifactId>bigledger-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>asia.wavelet</groupId>
+			<artifactId>bigledger-service.impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>asia.wavelet</groupId>
+			<artifactId>bigledger-dto</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>asia.wavelet</groupId>
 			<artifactId>bigledger-data</artifactId>
 		</dependency>
 

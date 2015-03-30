@@ -20,6 +20,8 @@
 		<module>../bigledger-common</module>
 		<module>../bigledger-dto</module>
 		<module>../bigledger-data</module>
+		<module>../bigledger-service</module>
+		<module>../bigledger-service.impl</module>
 		<module>../bigledger-server</module>
 	</modules>
 </project>

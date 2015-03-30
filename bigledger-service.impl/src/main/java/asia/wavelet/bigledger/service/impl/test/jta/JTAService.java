@@ -1,4 +1,4 @@
-package asia.wavelet.bigledger.data.service.impl.test.jta;
+package asia.wavelet.bigledger.service.impl.test.jta;
 
 import java.util.Calendar;
 
@@ -16,7 +16,7 @@ import asia.wavelet.bigledger.data.entity.test.jtaA.TableA;
 import asia.wavelet.bigledger.data.entity.test.jtaB.TableB;
 import asia.wavelet.bigledger.data.repository.test.jtaA.Jta1Dao;
 import asia.wavelet.bigledger.data.repository.test.jtaB.Jta2Dao;
-import asia.wavelet.bigledger.data.service.test.jta.IJTAService;
+import asia.wavelet.bigledger.service.test.jta.IJTAService;
 import asia.wavelet.bigledger.system.common.Constant;
 
 @Service

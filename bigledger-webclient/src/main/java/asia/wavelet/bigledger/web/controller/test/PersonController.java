@@ -1,17 +1,15 @@
 package asia.wavelet.bigledger.web.controller.test;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import asia.wavelet.bigledger.data.service.test.ITestService;
 import asia.wavelet.bigledger.web.controller.common.BaseController;
 
 @Controller
 @RequestMapping(value = "/testPerson")
 public class PersonController extends BaseController{
 	
-	@Autowired
+	/*@Autowired
 	private ITestService testService;
 	
 	@RequestMapping("/testFind")
@@ -35,6 +33,6 @@ public class PersonController extends BaseController{
 	public String testModify(){
 		testService.remove();
 		return "login";
-	}
+	}*/
 	
 }

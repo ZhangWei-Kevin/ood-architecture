@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 
-import asia.wavelet.bigledger.data.service.test.ITestService;
 import asia.wavelet.bigledger.data.test.common.SpringTransactionalTestCase;
+import asia.wavelet.bigledger.service.test.ITestService;
 
 @ContextConfiguration(locations = { "/applicationContext.xml" })
 public class TransactionServiceTest extends SpringTransactionalTestCase {

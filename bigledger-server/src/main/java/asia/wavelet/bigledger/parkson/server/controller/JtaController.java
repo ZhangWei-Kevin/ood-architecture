@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import asia.wavelet.bigledger.data.service.test.jta.IJTAService;
+import asia.wavelet.bigledger.service.test.jta.IJTAService;
 
 @Controller
 @RequestMapping(value = "/jta")

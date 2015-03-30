@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 
-import asia.wavelet.bigledger.data.service.test.jta.IJTAService;
+import asia.wavelet.bigledger.service.test.jta.IJTAService;
 
 @ContextConfiguration(locations = { "/applicationContext-jboss.xml" })
 public class JtaServiceTest extends SpringJtaTestCase {

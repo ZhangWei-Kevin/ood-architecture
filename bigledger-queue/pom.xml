@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>asia.wavelet</groupId>
-		<artifactId>parkson-parent</artifactId>
+		<artifactId>bigledger-parent</artifactId>
 		<version>2.0.0</version>
-		<relativePath>../parkson-parent/pom.xml</relativePath>
+		<relativePath>../bigledger-parent/pom.xml</relativePath>
 	</parent>
 
 	<artifactId>parkson-queue</artifactId>
@@ -17,16 +17,8 @@
 
 	<dependencies>
 		<!-- inner dependency start-->
-		<dependency>
-			<groupId>asia.wavelet</groupId>
-			<artifactId>parkson-data</artifactId>
-		</dependency>
 		<!-- inner dependency end-->
 
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-jdbc</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>

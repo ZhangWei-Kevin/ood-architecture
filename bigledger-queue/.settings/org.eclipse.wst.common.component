@@ -4,16 +4,6 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <dependent-module archiveName="parkson-data-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/parkson-data/parkson-data">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="parkson-common-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/parkson-common/parkson-common">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="parkson-dto-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/parkson-dto/parkson-dto">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="parkson-queue"/>
         <property name="java-output-path" value="/parkson-queue/target/classes"/>
     </wb-module>

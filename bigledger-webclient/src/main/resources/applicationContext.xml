@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
@@ -38,8 +37,7 @@
 	</bean>
 
 	<!-- Spring Data Jpa Configuration, scan the interface under base-package that implements Repository<T,ID> -->
-	<jpa:repositories base-package="asia.wavelet.bigledger.data.repository"
-		transaction-manager-ref="transactionManager"
+	<jpa:repositories base-package="asia.wavelet.bigledger.data.repository" transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- transaction configuration, one datasource -->
@@ -47,33 +45,23 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<!--  transaction annotation  -->
+	<!-- transaction annotation -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
-	
-	<!-- 
-	 调用StopWatch计时的Interceptor
-    <bean id="monitoringInterceptor" class="org.javasimon.spring.MonitoringInterceptor" />
 
-    监控定义了@Monitored的方法
-    <bean id="monitoringAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
-        <property name="advice" ref="monitoringInterceptor" />
-        <property name="pointcut">
-            <bean class="org.javasimon.spring.MonitoredMeasuringPointcut" />
-        </property>
-    </bean> -->
-    
-     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
-        <property name="proxyTargetClass" value="true" />
-    </bean>
+	<!-- 调用StopWatch计时的Interceptor <bean id="monitoringInterceptor" class="org.javasimon.spring.MonitoringInterceptor" /> 监控定义了@Monitored的方法 
+		<bean id="monitoringAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"> <property name="advice" ref="monitoringInterceptor" 
+		/> <property name="pointcut"> <bean class="org.javasimon.spring.MonitoredMeasuringPointcut" /> </property> </bean> -->
+
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
 
 	<!-- production env -->
 	<beans profile="production">
-		<context:property-placeholder
-			ignore-unresolvable="true" location="classpath*:/application.properties" />
+		<context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.properties" />
 
 		<!-- Tomcat JDBC connection pool -->
-		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
-			destroy-method="close">
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
 			<!-- Connection Info -->
 			<property name="driverClassName" value="${jdbc.driver}" />
 			<property name="url" value="${jdbc.url}" />
@@ -89,11 +77,10 @@
 	</beans>
 	<!-- test env -->
 	<beans profile="test">
-		<context:property-placeholder
-			ignore-unresolvable="true" location="classpath*:/application-test.properties" />
+		<context:property-placeholder ignore-unresolvable="true"
+			location="classpath*:/application-test.properties" />
 		<!-- Tomcat JDBC connection pool -->
-		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
-			destroy-method="close">
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
 			<!-- Connection Info -->
 			<property name="driverClassName" value="${jdbc.driver}" />
 			<property name="url" value="${jdbc.url}" />
@@ -109,11 +96,10 @@
 	</beans>
 	<!-- test env -->
 	<beans profile="test_log4jdbc">
-		<context:property-placeholder
-			ignore-unresolvable="true" location="classpath*:/application-test-log4jdbc.properties" />
+		<context:property-placeholder ignore-unresolvable="true"
+			location="classpath*:/application-test-log4jdbc.properties" />
 		<!-- Tomcat JDBC connection pool -->
-		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
-			destroy-method="close">
+		<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
 			<!-- Connection Info -->
 			<property name="driverClassName" value="${jdbc.driver}" />
 			<property name="url" value="${jdbc.url}" />

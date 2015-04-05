@@ -9,6 +9,11 @@ import asia.wavelet.bigledger.web.controller.common.BaseController;
 @RequestMapping(value = "/testPerson")
 public class PersonController extends BaseController{
 	
+	@RequestMapping("/testFind")
+	public String test() {
+		return "login";
+	}
+
 	/*@Autowired
 	private ITestService testService;
 	

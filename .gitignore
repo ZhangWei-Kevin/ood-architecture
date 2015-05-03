@@ -47,3 +47,13 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/ddd-queue
+/ddd-server
+/ddd-service
+/ddd-service.impl
+/ddd-webclient
+/ddd-aggregator
+/ddd-common
+/ddd-data
+/ddd-dto
+/ddd-parent

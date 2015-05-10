@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ddd2-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="ddd2-facade-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ddd2-facade/ddd2-facade">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ddd2-conf-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ddd2-conf/ddd2-conf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ddd2-infra-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ddd2-infra/ddd2-infra">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ddd2-core-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ddd2-core/ddd2-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ddd2-facade-impl-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ddd2-facade-impl/ddd2-facade-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ddd2-application-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ddd2-application/ddd2-application">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="ddd2-web"/>
+        <property name="java-output-path" value="/ddd2-web/target/classes"/>
+    </wb-module>
+</project-modules>

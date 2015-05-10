@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd"
+	default-lazy-init="true">
+
+	<description>JTA configuration</description>
+	<!-- <import resource="applicationContext-scheduler.xml"/> -->
+	<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/application-jboss.properties" />
+
+	<context:component-scan base-package="asia.wavelet.bigledger">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	
+	<jee:jndi-lookup id="ds_queue" jndi-name="java:/oracle_2" />
+	<jee:jndi-lookup id="ds_server" jndi-name="java:/oracle_1" />
+	
+
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" >
+		<property name="userTransaction">
+			<null />
+		</property>
+		<property name="transactionManagerName" value="java:/TransactionManager" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+	<context:annotation-config></context:annotation-config>
+	<tx:jta-transaction-manager></tx:jta-transaction-manager>
+	
+	<!--Enable injection of the Entity Manager-->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <!--Enable Spring's Exception Translation Mechanism-->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+	<!-- <alias name="oracle1_DataSource" alias="dataSource"/> -->
+	<bean id="serverEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="jtaDataSource" ref="ds_server" />
+		<property name="packagesToScan" value="asia.wavelet.bigledger.data.entity.test.jtaA" />
+		<property name="persistenceUnitName" value="entity_unit_server"></property>
+		<property name="jpaVendorAdapter" ref="oralce1_HibernateJpaVendorAdapter" />
+		<property name="loadTimeWeaver">
+				<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+			</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.connection.driver_class">oracle.jdbc.xa.client.OracleXADataSource</prop>
+				<prop key="hibernate.current_session_context_class">jta</prop>
+				<prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="oralce1_HibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform">
+			<value>${databasePlatform_1}</value>
+		</property>
+		<property name="showSql">
+			<value>true</value>
+		</property>
+		<property name="generateDdl">
+			<value>true</value>
+		</property>
+		<property name="database" value="ORACLE"></property>
+	</bean>
+
+
+	<jpa:repositories base-package="asia.wavelet.bigledger.data.repository.test.jtaA"
+		transaction-manager-ref="transactionManager" entity-manager-factory-ref="serverEntityManagerFactory" />
+
+	<bean id="queueEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="jtaDataSource" ref="ds_queue" />
+		<property name="packagesToScan" value="asia.wavelet.bigledger.data.entity.test.jtaB"/>
+		<property name="persistenceUnitName" value="entity_unit_queue"></property>
+		<property name="jpaVendorAdapter" ref="oracle2_HibernateJpaVendorAdapter" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.connection.driver_class">oracle.jdbc.xa.client.OracleXADataSource</prop>
+				<prop key="hibernate.current_session_context_class">jta</prop>
+				<prop key="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="oracle2_HibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform">
+			<value>${databasePlatform_2}</value>
+		</property>
+		<property name="showSql">
+			<value>true</value>
+		</property>
+		<property name="generateDdl">
+			<value>true</value>
+		</property>
+		<property name="database" value="ORACLE"></property>
+	</bean>
+
+	<jpa:repositories base-package="asia.wavelet.bigledger.data.repository.test.jtaB"
+		transaction-manager-ref="transactionManager" entity-manager-factory-ref="queueEntityManagerFactory" />
+</beans>
